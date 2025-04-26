@@ -1,8 +1,6 @@
 # BiNGS Bulk RNA-seq Pipeline
 A streamlined pipeline for bulk RNA-seq analysis (first release)
 
-Pipeline Owner:	Gulay Bengu Ulukaya
-
 BiNGS Core	Tisch Cancer Institute, Mount Sinai
 
 Welcome to the BiNGS Bulk RNA-seq pipeline — a full workflow for downloading, preprocessing, and analyzing bulk RNA-seq data through minerva terminal.
