@@ -42,7 +42,6 @@ Make sure to fill all metadata columns with your dataset info. If your dataset i
 Open an **Issue** please and I will get back to you ASAP.
 
 
-✅ Happy analyzing!
 
 
 ---
