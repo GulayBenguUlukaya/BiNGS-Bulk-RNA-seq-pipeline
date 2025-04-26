@@ -7,7 +7,7 @@ Welcome to the BiNGS Bulk RNA-seq pipeline — a full workflow for downloading, 
 
 🖥️ How to Set Up on HPC
 
-Clone the repository through terminal:
+>> Clone the repository through terminal:
 
 cd /your/working/directory/
 
