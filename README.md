@@ -26,12 +26,15 @@ git clone https://github.com/GulayBenguUlukaya/BiNGS-Bulk-RNA-seq-pipeline.git
   
 
 🧹 Good Practices
+
 Don't change anything inside the scripts. Answer the questions in terminal and press enter.
 
 🔖 Metadata
+
 Make sure to fill all metadata columns with your dataset info. If your dataset is single-ended, file_path_2 and file_name_2 can be blank.
 
-Pipeline Owner	Gulay Bengu Ulukaya
+Pipeline Owner:	Gulay Bengu Ulukaya
+
 BiNGS Core	Tisch Cancer Institute, Mount Sinai
 
 # 📫 Questions?
