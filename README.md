@@ -11,6 +11,7 @@ Welcome to the BiNGS Bulk RNA-seq pipeline — a full workflow for downloading, 
 Clone the repository through terminal:
 
 cd /your/working/directory/
+
 git clone https://github.com/GulayBenguUlukaya/BiNGS-Bulk-RNA-seq-pipeline.git
 
 🔄 Pipeline Steps
