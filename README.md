@@ -12,12 +12,18 @@ git clone https://github.com/GulayBenguUlukaya/BiNGS-Bulk-RNA-seq-pipeline.git
 🔄 Pipeline Steps
 
 Running .sh scripts in terminal:
+
   bash /path/to/script/......sh
   
+  
 Running .R scripts in terminal:
+
   ml R/4.2.0
+  
   R
+  
   source("/path/to/script/......R")
+  
 
 🧹 Good Practices
 Don't change anything inside the scripts. Answer the questions in terminal and press enter.
