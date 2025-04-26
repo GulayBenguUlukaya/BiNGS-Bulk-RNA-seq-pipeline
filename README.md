@@ -39,7 +39,7 @@ Make sure to fill all metadata columns with your dataset info. If your dataset i
 
 
 # 📫 Questions?
-Open an Issue please and I will get back to you ASAP.
+Open an **Issue** please and I will get back to you ASAP.
 
 
 ✅ Happy analyzing!
