@@ -1,8 +1,8 @@
 BiNGS Bulk RNA-Seq Pipeline
-Welcome to the BiNGS Bulk RNA-seq pipeline — a full workflow for downloading, preprocessing, and analyzing bulk RNA-seq data at the HPC cluster environment. 🚀
+Welcome to the BiNGS Bulk RNA-seq pipeline — a full workflow for downloading, preprocessing, and analyzing bulk RNA-seq data at the HPC cluster environment.
 
 📦 Repository Structure
-kotlin
+bash
 Copy
 Edit
 BiNGS-Bulk-RNA-seq-pipeline/
@@ -20,24 +20,24 @@ BiNGS-Bulk-RNA-seq-pipeline/
 ├── README.md
 └── LICENSE
 🖥️ How to Set Up on HPC
-Clone the repository to your HPC environment:
+Clone the repository:
 
 bash
 Copy
 Edit
 cd /your/working/directory/
 git clone https://github.com/GulayBenguUlukaya/BiNGS-Bulk-RNA-seq-pipeline.git
-Load R module (ensure R/4.2.0 is available on your HPC):
+Load the R module (R/4.2.0):
 
 bash
 Copy
 Edit
 ml R/4.2.0
-Set .libPaths() inside the R scripts to point to your HPC-specific R library.
+.libPaths() inside R scripts should be set to your cluster-specific R library paths.
 
 🔄 Pipeline Steps
 1. Data Download and Annotation Setup
-Prepare organism-specific annotation files under supporting_files/annotation/
+Prepare annotation files under supporting_files/annotation/.
 
 Supported organisms:
 
@@ -45,52 +45,48 @@ Homo sapiens
 
 Mus musculus
 
-If multiple organisms exist, the script will ask you which one to use ✅
+If multiple organisms exist, you will be asked to specify.
 
-2. Preprocessing Scripts
-Raw data → Preprocessed using tools like STAR, Salmon, etc. (handled outside this repo)
+2. Preprocessing
+Raw FASTQ data is processed externally (e.g., Salmon quantification).
 
-Compiled summary tables will be stored under processed/compiled_data/
+Processed data are compiled under data_rna/processed/compiled_data/.
 
-3. Clustering and Quality Control (R Script)
-Create PCA plots
+3. Clustering and Quality Control
+PCA plots colored by condition and batch.
 
-Batch correction if needed
+Distance heatmaps across samples.
 
-Distance matrix heatmaps
+Batch effect correction (optional).
 
-Save plots under figures/clustering/
+Figures saved under figures/clustering/.
 
-4. Differential Expression (R Script)
-Uses DESeq2
+4. Differential Expression Analysis
+Differential expression calculated with DESeq2.
 
-Results saved to analysis/differential_expression/
+Volcano plots auto-generated.
 
-Volcano plots automatically generated ✅
+Results saved under analysis/differential_expression/.
 
-5. Functional Enrichment Analysis (R Script)
-Runs GSEA against KEGG, Reactome, WikiPathways, and Hallmark gene sets
+5. Functional Enrichment Analysis
+GSEA run against KEGG, Reactome, WikiPathways, and Hallmark gene sets.
 
 Saves:
 
-GSEA results tables ✅
+GSEA result tables (*_gsea_results.csv).
 
-GSEA enrichment curves ✅
+Enrichment curves (per significant pathway).
 
-Top pathways barplots:
-
-NES plotted (−1 = blue ➔ 0 = white ➔ +1 = red)
-
-Statistically significant pathways (padj < 0.01) are asterisked * and bolded ✅
+Top pathways barplots (NES scale; significant pathways asterisked and bolded).
 
 🧹 Good Practices
-Always check module versions on the HPC.
+Always confirm R/4.2.0 modules are loaded.
 
-Make sure .fst and .csv input files exist in compiled_data/ before running.
+Ensure all input .fst and .csv files exist in compiled_data/.
 
-Prefer running inside an R batch job script if datasets are large.
+Use HPC batch submission when running heavy analyses.
 
-🔖 Pipeline Metadata
+🔖 Metadata
 
 Item	Description
 Language	R 4.2.0
@@ -99,8 +95,8 @@ License	MIT License
 Last Updated	2025
 BiNGS Core	Tisch Cancer Institute, Mount Sinai
 📫 Questions?
-Feel free to open an Issue or contact GulayBenguUlukaya directly on GitHub!
+Open an Issue or contact GulayBenguUlukaya directly.
 
 "We don’t just analyze data. We tell the story of biology."
 
-✅ Happy analyzing! 🎨📊🧬
+✅ Happy analyzing!
