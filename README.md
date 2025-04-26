@@ -6,6 +6,7 @@ BiNGS Core	Tisch Cancer Institute, Mount Sinai
 Welcome to the BiNGS Bulk RNA-seq pipeline — a full workflow for downloading, preprocessing, and analyzing bulk RNA-seq data through minerva terminal.
 
 🖥️ How to Set Up on HPC
+
 Clone the repository through terminal:
 
 cd /your/working/directory/
