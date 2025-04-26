@@ -1,81 +1,34 @@
 # BiNGS Bulk RNA-seq Pipeline
 A streamlined pipeline for bulk RNA-seq analysis (first release)
 
-Welcome to the BiNGS Bulk RNA-seq pipeline — a full workflow for downloading, preprocessing, and analyzing bulk RNA-seq data at the HPC cluster environment.
+Welcome to the BiNGS Bulk RNA-seq pipeline — a full workflow for downloading, preprocessing, and analyzing bulk RNA-seq data through minerva terminal.
 
 🖥️ How to Set Up on HPC
-Clone the repository:
+Clone the repository through terminal:
 
-bash
-Copy
-Edit
 cd /your/working/directory/
 git clone https://github.com/GulayBenguUlukaya/BiNGS-Bulk-RNA-seq-pipeline.git
-Load the R module (R/4.2.0):
-
-bash
-Copy
-Edit
-ml R/4.2.0
-.libPaths() inside R scripts should be set to your cluster-specific R library paths.
 
 🔄 Pipeline Steps
-1. Data Download and Annotation Setup
-Prepare annotation files under supporting_files/annotation/.
 
-Supported organisms:
-
-Homo sapiens
-
-Mus musculus
-
-If multiple organisms exist, you will be asked to specify.
-
-2. Preprocessing
-Raw FASTQ data is processed externally (e.g., Salmon quantification).
-
-Processed data are compiled under data_rna/processed/compiled_data/.
-
-3. Clustering and Quality Control
-PCA plots colored by condition and batch.
-
-Distance heatmaps across samples.
-
-Batch effect correction (optional).
-
-Figures saved under figures/clustering/.
-
-4. Differential Expression Analysis
-Differential expression calculated with DESeq2.
-
-Volcano plots auto-generated.
-
-Results saved under analysis/differential_expression/.
-
-5. Functional Enrichment Analysis
-GSEA run against KEGG, Reactome, WikiPathways, and Hallmark gene sets.
-
-Saves:
-
-GSEA result tables (*_gsea_results.csv).
-
-Enrichment curves (per significant pathway).
-
-Top pathways barplots (NES scale; significant pathways asterisked and bolded).
+Running .sh scripts in terminal:
+  bash /path/to/script/......sh
+  
+Running .R scripts in terminal:
+  ml R/4.2.0
+  R
+  source("/path/to/script/......R")
 
 🧹 Good Practices
-Always confirm R/4.2.0 modules are loaded.
-
-Ensure all input .fst and .csv files exist in compiled_data/.
-
-Use HPC batch submission when running heavy analyses.
+Don't change anything inside the scripts. Answer the questions in terminal and press enter.
 
 🔖 Metadata
-
+Make sure to fill all metadata columns with your dataset info. If your dataset is single-ended, file_path_2 and file_name_2 can be blank.
 
 Pipeline Owner	Gulay Bengu Ulukaya
 BiNGS Core	Tisch Cancer Institute, Mount Sinai
-📫 Questions?
+
+# 📫 Questions?
 Open an Issue please and I will get back to you ASAP.
 
 
