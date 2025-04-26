@@ -1,24 +1,13 @@
-BiNGS Bulk RNA-Seq Pipeline
+# BiNGS Bulk RNA-Seq Pipeline
 Welcome to the BiNGS Bulk RNA-seq pipeline — a full workflow for downloading, preprocessing, and analyzing bulk RNA-seq data at the HPC cluster environment.
 
-📦 Repository Structure
-bash
-Copy
-Edit
-BiNGS-Bulk-RNA-seq-pipeline/
-├── data_rna/
-│   ├── raw/
-│   ├── preprocessed/
-│   └── processed/
-├── supporting_files/
-│   └── annotation/
-├── scripts/
-│   ├── preprocessing/
-│   ├── clustering/
-│   ├── differential_expression/
-│   └── functional_analysis/
-├── README.md
-└── LICENSE
+Citation
+To cite material from this pipeline in your publications, please use:
+
+Gulay Bengu Ulukaya. (2025, April 26). BiNGS-Bulk-RNA-seq-pipeline: A streamlined pipeline for bulk RNA-seq analysis (first release). GitHub. https://github.com/GulayBenguUlukaya/BiNGS-Bulk-RNA-seq-pipeline.
+
+A lot of time and effort went into the development of this pipeline. Citations help us understand the needs of the research community, gain recognition for our work, and attract further support for continued development. Thank you for citing this material if it helped you in your data analysis.
+
 🖥️ How to Set Up on HPC
 Clone the repository:
 
@@ -88,15 +77,11 @@ Use HPC batch submission when running heavy analyses.
 
 🔖 Metadata
 
-Item	Description
-Language	R 4.2.0
+
 Pipeline Owner	Gulay Bengu Ulukaya
-License	MIT License
-Last Updated	2025
 BiNGS Core	Tisch Cancer Institute, Mount Sinai
 📫 Questions?
-Open an Issue or contact GulayBenguUlukaya directly.
+Open an Issue please and I will get back to you ASAP.
 
-"We don’t just analyze data. We tell the story of biology."
 
 ✅ Happy analyzing!
