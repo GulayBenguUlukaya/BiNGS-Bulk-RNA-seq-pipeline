@@ -53,7 +53,7 @@ If you have a question or request, please open an **Issue** on this Github repo 
 Citation
 To cite material from this pipeline in your publications, please use:
 
-Gulay Bengu Ulukaya. (2025, April 26). BiNGS-Bulk-RNA-seq-pipeline: A streamlined pipeline for bulk RNA-seq analysis (first release). GitHub. https://github.com/GulayBenguUlukaya/BiNGS-Bulk-RNA-seq-pipeline.
+Gulay Bengu Ulukaya. (2025). BiNGS-Bulk-RNA-seq-pipeline: An end-to-end bulk RNA-seq analysis pipeline (Version 1.0). GitHub. https://github.com/GulayBenguUlukaya/BiNGS-Bulk-RNA-seq-pipeline
 
 A lot of time and effort went into the development of this pipeline. Thank you for citing this material if it helped you in your data analysis.
 
