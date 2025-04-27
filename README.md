@@ -1,7 +1,7 @@
 # BiNGS Bulk RNA-seq Pipeline
 An end-to-end bulk RNA-seq analysis pipeline (Version 1.0)
 
-BiNGS Core	Tisch Cancer Institute, Mount Sinai
+BiNGS Core	at Tisch Cancer Institute, Mount Sinai
 
 Welcome to the BiNGS Bulk RNA-seq pipeline — a full workflow for downloading, preprocessing, and analyzing bulk RNA-seq data through minerva terminal.
 
