@@ -1,5 +1,5 @@
 # BiNGS Bulk RNA-seq Pipeline
-A streamlined pipeline for bulk RNA-seq analysis (first release)
+An end-to-end bulk RNA-seq analysis pipeline (Version 1.0)
 
 BiNGS Core	Tisch Cancer Institute, Mount Sinai
 
