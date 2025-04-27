@@ -41,7 +41,7 @@ Make sure to fill all metadata columns with your dataset info. If your dataset i
 
 
 # 📫 Questions?
-Open an **Issue** on this Github repo please and I will get back to you ASAP.
+If you have a question or request, please open an **Issue** on this Github repo and I will get back to you ASAP.
 
 
 
