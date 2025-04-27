@@ -35,11 +35,13 @@ Don't change anything inside the scripts. Answer the questions in terminal and p
 
 🔖 Metadata
 
+When you run the A1.prepare_files.sh script, it will copy over an example metadata and prompt you to edit it. 
+
 Make sure to fill all metadata columns with your dataset info. If your dataset is single-ended, file_path_2 and file_name_2 can be blank.
 
 
 # 📫 Questions?
-Open an **Issue** please and I will get back to you ASAP.
+Open an **Issue** on this Github repo please and I will get back to you ASAP.
 
 
 
