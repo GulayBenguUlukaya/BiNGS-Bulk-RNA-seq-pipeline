@@ -31,7 +31,7 @@ Disk quotas for user ulukag01 (uid 25471):
 
 [ulukag01@li04e02 BiNGS]$ bsub -P acc_BiNGS_bulk -q premium -n 10 -W 4:00 -R span[hosts=1] -R rusage[mem=64000] -Is /bin/bash 
 
-**#Instead of acc_BiNGS_bulk, use your project account please!
+** #Instead of acc_BiNGS_bulk, use your project account please!
 
 orit_res:  rusage[mem=64000] span[hosts=1]
 
