@@ -53,7 +53,7 @@ Proxy request sent, awaiting response... 403 Forbidden
 
 🌐 Please make sure you can see contents of https://ulukag01.dmz.hpc.mssm.edu/data_rna/ and https://ulukag01.dmz.hpc.mssm.edu/supporting_files/.
 
-If you can't, it means there is an issue with Mount Sinai servers. Please delete your 'BiNGS-Bulk-RNA-seq-pipeline' folder and start later when you can see the contents of these two links.
+If you can't, it means there is possibly an issue with Mount Sinai DMZ (Demilitarized Zone) server. Please delete your 'BiNGS-Bulk-RNA-seq-pipeline' folder and start later when you can see the contents of these two links.
 
 # 📫 Questions?
 If you have a question or request, please open an **Issue** on this Github repo and I will get back to you ASAP.
