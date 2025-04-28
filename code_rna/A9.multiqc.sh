@@ -31,7 +31,7 @@ multiqc_config="$multiqc_dir/multiqc_config_rnaseq_bulk_rna.yaml"
 
 if [[ ! -f "$multiqc_config" ]]; then
     echo "⬇️  Downloading MultiQC configuration YAML..."
-    wget -q --show-progress -P "$multiqc_dir" "https://ulukag01.dmz.hpc.mssm.edu/supporting_files/multiqc/multiqc_config_rnaseq_bulk_rna.yaml"
+    wget -q --show-progress -P "$multiqc_dir" "https://ulukag01.u.hpc.mssm.edu/supporting_files/multiqc/multiqc_config_rnaseq_bulk_rna.yaml"
     echo "✅ Downloaded MultiQC config: $multiqc_config"
 else
     echo "✅ Found existing MultiQC config: $multiqc_config"
