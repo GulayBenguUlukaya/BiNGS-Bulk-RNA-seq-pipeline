@@ -88,13 +88,13 @@ if (length(detected_organisms) == 1) {
 if (organism == "homo_sapiens") {
     subfolder = "grch38_gencode_36"
     anno_subpath = file.path(anno_dir, organism, subfolder)
-    txdb_url = "https://ulukag01.dmz.hpc.mssm.edu/supporting_files/annotation/homo_sapiens/grch38_gencode_36/txdb/homo_sapiens_grch38_gencode_36.sqlite"
-    annotation_url = "https://ulukag01.dmz.hpc.mssm.edu/supporting_files/annotation/homo_sapiens/grch38_gencode_36/data/ensembl_transcript_annotations.csv"
+    txdb_url = "https://ulukag01.u.hpc.mssm.edu/supporting_files/annotation/homo_sapiens/grch38_gencode_36/txdb/homo_sapiens_grch38_gencode_36.sqlite"
+    annotation_url = "https://ulukag01.u.hpc.mssm.edu/supporting_files/annotation/homo_sapiens/grch38_gencode_36/data/ensembl_transcript_annotations.csv"
 } else if (organism == "mus_musculus") {
     subfolder = "grcm38_gencode_M25"
     anno_subpath = file.path(anno_dir, organism, subfolder)
-    txdb_url = "https://ulukag01.dmz.hpc.mssm.edu/supporting_files/annotation/mus_musculus/grcm38_gencode_M25/txdb/mus_musculus_grcm38_gencode_M25.sqlite"
-    annotation_url = "https://ulukag01.dmz.hpc.mssm.edu/supporting_files/annotation/mus_musculus/grcm38_gencode_M25/data/ensembl_transcript_annotations.csv"
+    txdb_url = "https://ulukag01.u.hpc.mssm.edu/supporting_files/annotation/mus_musculus/grcm38_gencode_M25/txdb/mus_musculus_grcm38_gencode_M25.sqlite"
+    annotation_url = "https://ulukag01.u.hpc.mssm.edu/supporting_files/annotation/mus_musculus/grcm38_gencode_M25/data/ensembl_transcript_annotations.csv"
 } else {
     cat("\n⚠️ You picked a custom organism. Please provide:\n",
         "1. Path to a TxDb SQLite file (*.sqlite)\n",
