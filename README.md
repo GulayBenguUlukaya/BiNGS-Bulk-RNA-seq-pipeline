@@ -41,8 +41,8 @@ Make sure to fill all metadata columns with your dataset info. If your dataset i
 
 
 # 🌐❌ What if..?
-- Are you getting the error below while running A1?
-- 
+- ... you are getting the error below while running A1:
+  
 --2025-04-28 10:48:32--  https://ulukag01.dmz.hpc.mssm.edu/data_rna/raw/sample_metadata/
   
 Connecting to 172.28.7.1:3128... connected.
