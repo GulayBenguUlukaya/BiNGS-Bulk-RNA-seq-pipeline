@@ -22,7 +22,7 @@ multiqc_dir="${preprocessed_dir}/multiqc"
 mkdir -p "$multiqc_dir"
 
 # Download MultiQC header template
-wget -q --show-progress -P "$multiqc_dir" "https://ulukag01.dmz.hpc.mssm.edu/supporting_files/multiqc/multiqc_featurecounts_biotype_header.txt"
+wget -q --show-progress -P "$multiqc_dir" "https://ulukag01.u.hpc.mssm.edu/supporting_files/multiqc/multiqc_featurecounts_biotype_header.txt"
 
 sample_metadata="${raw_dir}/sample_metadata/sample_metadata_rna.csv"
 
