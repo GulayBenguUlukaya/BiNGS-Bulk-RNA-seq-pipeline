@@ -67,11 +67,11 @@ if (length(detected_organisms) == 1) {
 if (organism == "homo_sapiens") {
     subfolder = "grch38_gencode_36"
     gtf_file <- file.path(anno_dir, organism, subfolder, "data", "gencode.v36.annotation.gtf")
-    gtf_url <- "https://ulukag01.dmz.hpc.mssm.edu/supporting_files/annotation/homo_sapiens/grch38_gencode_36/data/gencode.v36.annotation.gtf"
+    gtf_url <- "https://ulukag01.u.hpc.mssm.edu/supporting_files/annotation/homo_sapiens/grch38_gencode_36/data/gencode.v36.annotation.gtf"
 } else if (organism == "mus_musculus") {
     subfolder = "grcm38_gencode_M25"
     gtf_file <- file.path(anno_dir, organism, subfolder, "data", "gencode.vM25.annotation.gtf")
-    gtf_url <- "https://ulukag01.dmz.hpc.mssm.edu/supporting_files/annotation/mus_musculus/grcm38_gencode_M25/data/gencode.vM25.annotation.gtf"
+    gtf_url <- "https://ulukag01.u.hpc.mssm.edu/supporting_files/annotation/mus_musculus/grcm38_gencode_M25/data/gencode.vM25.annotation.gtf"
 } else {
     cat("\n⚠️ You picked a custom organism.\nPlease provide full path to a GTF file (*.annotation.gtf): ")
     gtf_file <- trimws(readLines(con = stdin(), n = 1))
