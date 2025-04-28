@@ -40,8 +40,8 @@ When you run the A1.prepare_files.sh script, it will copy over an example metada
 Make sure to fill all metadata columns with your dataset info. If your dataset is single-ended, file_path_2 and file_name_2 can be blank.
 
 
-# 🌐❌ What if..?
-- ... you are getting the error below while running A1:
+# 🌐❌ What if...
+- you are getting the error below while running A1?
   
 --2025-04-28 10:48:32--  https://ulukag01.dmz.hpc.mssm.edu/data_rna/raw/sample_metadata/
   
