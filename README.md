@@ -11,28 +11,46 @@ Welcome to the BiNGS Bulk RNA-seq pipeline — a full workflow for downloading, 
 
 >> git clone https://github.com/GulayBenguUlukaya/BiNGS-Bulk-RNA-seq-pipeline.git
 
-# Recommendation and demo
+✋ Recommendation and demo
+
 Start a screen session and submit an interactive job request:
 
 (This is optional but highly recommended for speeding up A1)
 
 [ulukag01@li04e02 BiNGS]$ 
+
 [ulukag01@li04e02 BiNGS]$ screen -S rnaseq
+
 Disk quotas for user ulukag01 (uid 25471): 
+
      Filesystem   space   quota   limit   grace   files   quota   limit   grace
+     
  nfsha-ib0:/hpc  19049M  19456M  20480M            281k       0       0        
+ 
 [ulukag01@li04e02 BiNGS]$ 
+
 [ulukag01@li04e02 BiNGS]$ bsub -P acc_BiNGS_bulk -q premium -n 10 -W 4:00 -R span[hosts=1] -R rusage[mem=64000] -Is /bin/bash 
+
 **#Instead of acc_BiNGS_bulk, use your project account please!
+
 orit_res:  rusage[mem=64000] span[hosts=1]
+
 init mod: 
+
 Job <183299424> is submitted to queue <premium>.
+
 <<Waiting for dispatch ...>>
+
 <<Starting on lc06e36>>
+
 [ulukag01@lc06e36 BiNGS]$ 
+
 [ulukag01@lc06e36 BiNGS]$ 
+
 [ulukag01@lc06e36 BiNGS]$ cd ./rna_seq_pipeline_test
+
 [ulukag01@lc06e36 rna_seq_pipeline_test]$ 
+
 [ulukag01@lc06e36 rna_seq_pipeline_test]$ git clone https://github.com/GulayBenguUlukaya/BiNGS-Bulk-RNA-seq-pipeline.git
 
 🔄 Pipeline Steps
