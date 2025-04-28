@@ -13,7 +13,7 @@ Welcome to the BiNGS Bulk RNA-seq pipeline — a full workflow for downloading, 
 
 ✋ CodeServer OnDemand: Recommendation for starting out and running A1
 
-When starting a session, specify premium queue, 10 cores (n), 64 Gb memory
+When starting a session, specify premium queue, 10 cores (n), 64 Gb memory, at least 4 hrs.
 
 For scripts other than A1, a much smaller amount of resources would suffice.
 
