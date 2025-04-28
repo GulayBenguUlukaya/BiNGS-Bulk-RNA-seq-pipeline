@@ -33,10 +33,6 @@ Disk quotas for user ulukag01 (uid 25471):
 
 ⚠️ Instead of acc_BiNGS_bulk, use your project account please!
 
-orit_res:  rusage[mem=64000] span[hosts=1]
-
-init mod: 
-
 Job <183299424> is submitted to queue <premium>.
 
 <<Waiting for dispatch ...>>
@@ -45,13 +41,14 @@ Job <183299424> is submitted to queue <premium>.
 
 [ulukag01@lc06e36 BiNGS]$ 
 
-[ulukag01@lc06e36 BiNGS]$ 
-
 [ulukag01@lc06e36 BiNGS]$ cd ./rna_seq_pipeline_test
 
 [ulukag01@lc06e36 rna_seq_pipeline_test]$ 
 
 [ulukag01@lc06e36 rna_seq_pipeline_test]$ git clone https://github.com/GulayBenguUlukaya/BiNGS-Bulk-RNA-seq-pipeline.git
+
+🔥 Now you can start running from A1 and follow instructions on terminal.
+
 
 🔄 Pipeline Steps
 
