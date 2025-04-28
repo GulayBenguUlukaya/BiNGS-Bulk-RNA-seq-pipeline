@@ -97,7 +97,7 @@ else
     if [[ "$organism" == "mus_musculus" || "$organism" == "homo_sapiens" ]]; then
         echo "⬇️  Downloading Salmon index for $organism..."
 
-        base_url="https://ulukag01.dmz.hpc.mssm.edu/supporting_files/annotation"
+        base_url="https://ulukag01.u.hpc.mssm.edu/supporting_files/annotation"
 
         if [[ "$organism" == "mus_musculus" ]]; then
             annotation_subdir="grcm38_gencode_M25"
