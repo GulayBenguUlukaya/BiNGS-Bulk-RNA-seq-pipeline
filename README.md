@@ -25,7 +25,7 @@ Disk quotas for user ulukag01 (uid 25471):
 
      Filesystem   space   quota   limit   grace   files   quota   limit   grace
      
- nfsha-ib0:/hpc  19049M  19456M  20480M            281k       0       0        
+      nfsha-ib0:/hpc  19049M  19456M  20480M            281k       0       0        
  
 [ulukag01@li04e02 BiNGS]$ 
 
