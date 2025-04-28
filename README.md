@@ -11,7 +11,7 @@ Welcome to the BiNGS Bulk RNA-seq pipeline — a full workflow for downloading, 
 
 >> git clone https://github.com/GulayBenguUlukaya/BiNGS-Bulk-RNA-seq-pipeline.git
 
-✋ Option 1: CodeServer OnDemand: Recommendation for starting out and running A1
+✋ Option 1: CodeServer OnDemand - Recommendation for starting out and running A1
 
 When starting a session, specify premium queue, 10 cores (n), 64 Gb memory, at least 4 hrs.
 
@@ -19,7 +19,7 @@ For scripts other than A1, a much smaller amount of resources would suffice. (e.
 
 Make a directory for your project and cd into it through terminal. Then run the git clone line (shown above) and answer prompts through terminal.
 
-✋ Option 2: VSCode Desktop App: Recommendation and demo for starting out and running A1
+✋ Option 2: VSCode Desktop App - Recommendation and demo for starting out and running A1
 
 Start a screen session and submit an interactive job request:
 
