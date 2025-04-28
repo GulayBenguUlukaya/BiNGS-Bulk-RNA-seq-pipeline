@@ -30,8 +30,8 @@ if [[ ! -f "${sample_metadata}" ]]; then
         echo "📁 Downloading the sample metadata and fastqs for GSE228989 bulk RNA-seq data..."
         sleep 3
         # Download sample metadata and fastqs
-        wget -r -np -nH --cut-dirs=2 --reject "index.html*" https://ulukag01.dmz.hpc.mssm.edu/data_rna/raw/sample_metadata/ -P "$raw_dir/"
-        wget -r -np -nH --cut-dirs=2 --reject "index.html*" https://ulukag01.dmz.hpc.mssm.edu/data_rna/raw/fastqs/ -P "$raw_dir/"
+        wget -r -np -nH --cut-dirs=2 --reject "index.html*" https://ulukag01.u.hpc.mssm.edu/data_rna/raw/sample_metadata/ -P "$raw_dir/"
+        wget -r -np -nH --cut-dirs=2 --reject "index.html*" https://ulukag01.u.hpc.mssm.edu/data_rna/raw/fastqs/ -P "$raw_dir/"
 
         echo "✅ Sample metadata and FASTQs copied to: $raw_dir."
 
@@ -44,7 +44,7 @@ if [[ ! -f "${sample_metadata}" ]]; then
         echo "📁 Downloading annotation files for mus_musculus..."
         sleep 3
         wget -r -np -nH --cut-dirs=3 --reject "index.html*" \
-            https://ulukag01.dmz.hpc.mssm.edu/supporting_files/annotation/mus_musculus/ \
+            https://ulukag01.u.hpc.mssm.edu/supporting_files/annotation/mus_musculus/ \
             -P "$supporting_files_dir/annotation/mus_musculus"
 
         echo "✅ Annotation files copied to: $supporting_files_dir/annotation/mus_musculus"
@@ -55,7 +55,7 @@ if [[ ! -f "${sample_metadata}" ]]; then
         echo "Great, you have another dataset in mind!"
         mkdir -p "${raw_dir}/sample_metadata"
         wget -r -np -nH --cut-dirs=3 --reject "index.html*" \
-            https://ulukag01.dmz.hpc.mssm.edu/data_rna/raw/sample_metadata/ \
+            https://ulukag01.u.hpc.mssm.edu/data_rna/raw/sample_metadata/ \
             -P "${raw_dir}/sample_metadata"
         echo "📄 Here is an example sample metadata file for you to edit: $sample_metadata"
         echo "✋ Please re-run this script after finalizing your metadata."
@@ -110,7 +110,7 @@ else
             echo "📁 Downloading annotation files for mus_musculus..."
             sleep 3
             wget -r -np -nH --cut-dirs=3 --reject "index.html*" \
-                https://ulukag01.dmz.hpc.mssm.edu/supporting_files/annotation/mus_musculus/ \
+                https://ulukag01.u.hpc.mssm.edu/supporting_files/annotation/mus_musculus/ \
                 -P "$supporting_files_dir/annotation/mus_musculus"
 
             echo "✅ Annotation files copied to: $supporting_files_dir/annotation/mus_musculus"
@@ -120,7 +120,7 @@ else
             echo "📁 Downloading annotation files for homo_sapiens..."
             sleep 3
             wget -r -np -nH --cut-dirs=3 --reject "index.html*" \
-                https://ulukag01.dmz.hpc.mssm.edu/supporting_files/annotation/homo_sapiens/ \
+                https://ulukag01.u.hpc.mssm.edu/supporting_files/annotation/homo_sapiens/ \
                 -P "$supporting_files_dir/annotation/homo_sapiens"
 
             echo "✅ Annotation files copied to: $supporting_files_dir/annotation/homo_sapiens"
