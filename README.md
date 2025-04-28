@@ -11,7 +11,11 @@ Welcome to the BiNGS Bulk RNA-seq pipeline — a full workflow for downloading, 
 
 >> git clone https://github.com/GulayBenguUlukaya/BiNGS-Bulk-RNA-seq-pipeline.git
 
-✋ Recommendation and demo
+✋ CodeServer OnDemand: Recommendation for starting out and running A1
+
+When starting a session, specify premium queue, 10 cores (n), 64 Gb memory
+
+✋ VSCode Desktop App: Recommendation and demo for starting out and running A1
 
 Start a screen session and submit an interactive job request:
 
@@ -47,7 +51,7 @@ Job <183299424> is submitted to queue <premium>.
 
 [ulukag01@lc06e36 rna_seq_pipeline_test]$ git clone https://github.com/GulayBenguUlukaya/BiNGS-Bulk-RNA-seq-pipeline.git
 
-🔥 Now you can start running from A1 and follow instructions on terminal.
+🔥 Now you can start running from A1 and follow instructions on terminal. For scripts other than A1, a much smaller amount of resources would suffice.
 
 For more info about screen sessions, please refer to https://linuxize.com/post/how-to-use-linux-screen/ 
 
