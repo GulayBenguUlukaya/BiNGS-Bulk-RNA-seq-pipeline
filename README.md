@@ -40,11 +40,23 @@ When you run the A1.prepare_files.sh script, it will copy over an example metada
 Make sure to fill all metadata columns with your dataset info. If your dataset is single-ended, file_path_2 and file_name_2 can be blank.
 
 
+# 🌐❌ What if..?
+- Are you getting the error below while running A1?
+- 
+--2025-04-28 10:48:32--  https://ulukag01.dmz.hpc.mssm.edu/data_rna/raw/sample_metadata/
+  
+Connecting to 172.28.7.1:3128... connected.
+
+Proxy request sent, awaiting response... 403 Forbidden
+
+2025-04-28 10:48:39 ERROR 403: Forbidden.
+
+Please make sure you can see contents of https://ulukag01.dmz.hpc.mssm.edu/data_rna/ and https://ulukag01.dmz.hpc.mssm.edu/supporting_files/.
+
+If you can't, it means there is an issue with Mount Sinai servers. Please delete your 'BiNGS-Bulk-RNA-seq-pipeline' folder and start later when you can see the contents of these two links.
+
 # 📫 Questions?
 If you have a question or request, please open an **Issue** on this Github repo and I will get back to you ASAP.
-
-
-
 
 ---
 
