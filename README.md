@@ -15,7 +15,7 @@ Welcome to the BiNGS Bulk RNA-seq pipeline — a full workflow for downloading, 
 
 When starting a session, specify premium queue, 10 cores (n), 64 Gb memory, at least 4 hrs.
 
-For scripts other than A1, a much smaller amount of resources would suffice.
+For scripts other than A1, a much smaller amount of resources would suffice. (e.g. 2 cores, 6 Gb)
 
 Make a directory for your project and cd into it through terminal. Then run the git clone line (shown above) and answer prompts through terminal.
 
