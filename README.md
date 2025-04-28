@@ -49,6 +49,8 @@ Job <183299424> is submitted to queue <premium>.
 
 🔥 Now you can start running from A1 and follow instructions on terminal.
 
+For more info about screen sessions, please refer to https://linuxize.com/post/how-to-use-linux-screen/ 
+
 
 🔄 Pipeline Steps
 
