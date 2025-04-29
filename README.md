@@ -11,7 +11,7 @@ Welcome to the BiNGS Bulk RNA-seq pipeline — a full workflow for downloading, 
 
 >> git clone https://github.com/GulayBenguUlukaya/BiNGS-Bulk-RNA-seq-pipeline.git
 
-✋ Option 1: CodeServer OnDemand - Recommendation and demo for starting out
+✋ Option 1: CodeServer OnDemand - Setup demo
 
 When starting a session, specify premium queue, 10 cores (n), 64 Gb memory, 4 hrs.
 
@@ -27,7 +27,7 @@ Make a directory for your project and cd into it through terminal. Then run the 
      
      [ulukag01@lc06e36 rna_seq_pipeline_test]$ git clone https://github.com/GulayBenguUlukaya/BiNGS-Bulk-RNA-seq-pipeline.git
 
-✋ Option 2: VSCode Desktop App - Recommendation and demo for starting out
+✋ Option 2: VSCode Desktop App - Setup demo
 
 Start a screen session and submit an interactive job request:
 
