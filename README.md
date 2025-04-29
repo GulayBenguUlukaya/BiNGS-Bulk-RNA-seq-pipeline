@@ -7,8 +7,8 @@ Developed by the BiNGS Core at the Tisch Cancer Institute, Mount Sinai
 
 ## Table of Contents
 - Setup
-  - [Option 1: CodeServer (OnDemand) Setup](#-option-1-codeserver-ondemand-setup)
-  - [Option 2: VSCode Desktop App Setup](#-option-2-vscode-desktop-app-setup)
+  - [Option 1: CodeServer (OnDemand) Setup](#option-1-codeserver-ondemand-setup)
+  - [Option 2: VSCode Desktop App Setup](#option-2-vscode-desktop-app-setup)
 - Running Scripts
   - [Bash Scripts](#bash-scripts)
   - [R Scripts](#r-scripts)
