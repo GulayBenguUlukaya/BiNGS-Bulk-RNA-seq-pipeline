@@ -20,7 +20,7 @@ Developed by the BiNGS Core at the Tisch Cancer Institute, Mount Sinai
   
 ## 🖥️ Setup on HPC
 
-### 🔁 Clone the Pipeline Repository
+### Clone the Pipeline Repository
 
 ```bash
 cd /your/working/directory/
