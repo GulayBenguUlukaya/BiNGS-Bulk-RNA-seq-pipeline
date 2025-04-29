@@ -1,133 +1,135 @@
-# BiNGS Bulk RNA-seq Pipeline
-An end-to-end bulk RNA-seq analysis pipeline (Version 1.0)
 
-BiNGS Core	at Tisch Cancer Institute, Mount Sinai
+# BiNGS Bulk RNA-seq Pipeline  
+*An End-to-End Bulk RNA-seq Analysis Pipeline*  
+Developed by the BiNGS Core at the Tisch Cancer Institute, Mount Sinai
 
-Welcome to the BiNGS Bulk RNA-seq pipeline — a full workflow for downloading, preprocessing, and analyzing bulk RNA-seq data through minerva terminal.
+---
 
-🖥️ How to Set Up on HPC
+## 🖥️ Setup on HPC
 
->> cd /your/working/directory/
+### 🔁 Clone the Pipeline Repository
 
->> git clone https://github.com/GulayBenguUlukaya/BiNGS-Bulk-RNA-seq-pipeline.git
+```bash
+cd /your/working/directory/
+git clone https://github.com/GulayBenguUlukaya/BiNGS-Bulk-RNA-seq-pipeline.git
+```
 
-✋ Option 1: CodeServer OnDemand - Setup demo
+---
 
-When starting a session, specify premium queue, 10 cores (n), 64 Gb memory, 4 hrs.
+## ✋ Option 1: CodeServer (OnDemand) Setup
 
-For scripts other than A1, a much smaller amount of resources would suffice. (e.g. 2 cores, 6 Gb)
+1. **Start a session with:**
+   - Queue: `premium`
+   - Cores: `10`
+   - Memory: `64 GB`
+   - Walltime: `4 hrs`
 
-Make a directory for your project and cd into it through terminal. Then run the git clone line (shown below).
+2. **Create and enter your project directory:**
 
-     [ulukag01@lc06e36 BiNGS]$ mkdir ./rna_seq_pipeline_test
-     
-     [ulukag01@lc06e36 BiNGS]$ cd ./rna_seq_pipeline_test
-     
-     [ulukag01@lc06e36 rna_seq_pipeline_test]$ 
-     
-     [ulukag01@lc06e36 rna_seq_pipeline_test]$ git clone https://github.com/GulayBenguUlukaya/BiNGS-Bulk-RNA-seq-pipeline.git
+```bash
+mkdir ./rna_seq_pipeline_test
+cd ./rna_seq_pipeline_test
+git clone https://github.com/GulayBenguUlukaya/BiNGS-Bulk-RNA-seq-pipeline.git
+```
 
-✋ Option 2: VSCode Desktop App - Setup demo
+> For steps after cloning, begin with `A1.prepare_files.sh` and follow the prompts.
 
-Start a screen session and submit an interactive job request:
+---
 
-(This is optional but highly recommended for speeding up A1)
+## ✋ Option 2: VSCode Desktop App Setup
 
-     [ulukag01@li04e02 BiNGS]$ 
-     
-     [ulukag01@li04e02 BiNGS]$ screen -S rnaseq
-     
-     Disk quotas for user ulukag01 (uid 25471): 
+1. **Start a `screen` session and request interactive job:**
 
-     Filesystem   space   quota   limit   grace   files   quota   limit   grace
-     
-      nfsha-ib0:/hpc  19049M  19456M  20480M            281k       0       0        
- 
-     [ulukag01@li04e02 BiNGS]$ 
+```bash
+screen -S rnaseq
+```
 
-⚠️ Instead of acc_BiNGS_bulk, use your project account please!
-     
-     [ulukag01@li04e02 BiNGS]$ bsub -P acc_BiNGS_bulk -q premium -n 10 -W 4:00 -R span[hosts=1] -R rusage[mem=64000] -Is /bin/bash 
+> ⚠️ Use your **own project account** instead of `acc_BiNGS_bulk`.
 
-     Job <183299424> is submitted to queue <premium>.
-     
-     <<Waiting for dispatch ...>>
-     
-     <<Starting on lc06e36>>
+```bash
+bsub -P <your_project_account> -q premium -n 10 -W 4:00 -R span[hosts=1] -R rusage[mem=64000] -Is /bin/bash
+```
 
-Make a directory for your project and cd into it through terminal. Then run the git clone line (shown below).
-     
-     [ulukag01@lc06e36 BiNGS]$ mkdir ./rna_seq_pipeline_test
-     
-     [ulukag01@lc06e36 BiNGS]$ cd ./rna_seq_pipeline_test
-     
-     [ulukag01@lc06e36 rna_seq_pipeline_test]$ 
-     
-     [ulukag01@lc06e36 rna_seq_pipeline_test]$ git clone https://github.com/GulayBenguUlukaya/BiNGS-Bulk-RNA-seq-pipeline.git
+2. **Create and enter your project directory:**
 
-🔥 Now you can start running from A1 and follow instructions on terminal. 
+```bash
+mkdir ./rna_seq_pipeline_test
+cd ./rna_seq_pipeline_test
+git clone https://github.com/GulayBenguUlukaya/BiNGS-Bulk-RNA-seq-pipeline.git
+```
 
-For more info about screen sessions, please refer to https://linuxize.com/post/how-to-use-linux-screen/ 
+3. **Start running from Step A1.**
 
+> 📘 For more on `screen`, see: [linuxize.com/post/how-to-use-linux-screen](https://linuxize.com/post/how-to-use-linux-screen/)
 
-🔄 Pipeline Steps
+---
 
-Running .sh scripts in terminal:
+## 🔧 Running Scripts
 
->> bash /path/to/script/......sh
-  
-  
-Running .R scripts in terminal:
+### Bash Scripts
 
->> ml R/4.2.0
-  
->> R
-  
->> source("/path/to/script/......R")
-  
+```bash
+bash /path/to/script.sh
+```
 
-🧹 Good Practices
+### R Scripts
 
-Don't change anything inside the scripts. Answer the questions in terminal and press enter.
+```bash
+ml R/4.2.0
+R
+source("/path/to/script.R")
+```
 
-🔖 Metadata
+---
 
-When you run the A1.prepare_files.sh script, it will copy over an example metadata and prompt you to edit it. 
+## 🧹 Good Practices
 
-Make sure to fill all metadata columns with your dataset info. If your dataset is single-ended, file_path_2 and file_name_2 can be blank.
+- Do **not** modify pipeline scripts.
+- Answer prompts directly in the terminal and press Enter.
+- Ensure your sample metadata is properly filled in when prompted by `A1.prepare_files.sh`.
 
+> For single-end datasets, leave `file_path_2` and `file_name_2` blank.
 
-# ❌ What if...
-- you are getting the error below while running A1?
-  
+---
+
+## 🛠️ Troubleshooting
+
+### 🚫 Problem: "403 Forbidden" error during A1 script
+
+```text
 --2025-04-28 10:48:32--  https://ulukag01.u.hpc.mssm.edu/data_rna/raw/sample_metadata/
-  
 Connecting to 172.28.7.1:3128... connected.
-
 Proxy request sent, awaiting response... 403 Forbidden
+ERROR 403: Forbidden.
+```
 
-2025-04-28 10:48:39 ERROR 403: Forbidden.
+**Solution:**  
+Check that you can access the following in your browser:
 
-🌐 Please make sure you can see contents of https://ulukag01.u.hpc.mssm.edu/data_rna/ and https://ulukag01.u.hpc.mssm.edu/supporting_files/.
+- https://ulukag01.u.hpc.mssm.edu/data_rna/
+- https://ulukag01.u.hpc.mssm.edu/supporting_files/
 
-If you can't, it means there is possibly an issue with Mount Sinai servers. Please delete your 'BiNGS-Bulk-RNA-seq-pipeline' folder and start later when you can see the contents of these two links.
-
-# 📫 Questions?
-If you have a question or request, please open an **Issue** on this Github repo and I will get back to you ASAP.
-
----
-
-### Citation
-
-Citation
-To cite material from this pipeline in your publications, please use:
-
-Gulay Bengu Ulukaya. (2025). BiNGS-Bulk-RNA-seq-pipeline: An end-to-end bulk RNA-seq analysis pipeline (Version 1.0). GitHub. https://github.com/GulayBenguUlukaya/BiNGS-Bulk-RNA-seq-pipeline
-
-A lot of time and effort went into the development of this pipeline. Thank you for citing this material if it helped you in your data analysis.
+If these links do not load, there may be a temporary server issue at Mount Sinai. Please delete your pipeline folder and try again later.
 
 ---
 
-*These materials have been developed by members of the teaching team at the [The Bioinformatics for Next-Generation Sequencing (BiNGS) Core](https://bings.mssm.edu/). These are open access materials and permitted unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.*
+## 📫 Questions?
 
+If you encounter an issue or have a feature request, please open an **Issue** on the GitHub repository:  
+👉 [https://github.com/GulayBenguUlukaya/BiNGS-Bulk-RNA-seq-pipeline/issues](https://github.com/GulayBenguUlukaya/BiNGS-Bulk-RNA-seq-pipeline/issues)
 
+---
+
+## 📚 Citation
+
+Ulukaya, G. B. (2025). *BiNGS-Bulk-RNA-seq-pipeline: An end-to-end bulk RNA-seq analysis pipeline* (Version 1.0) [Software]. GitHub.  
+https://github.com/GulayBenguUlukaya/BiNGS-Bulk-RNA-seq-pipeline
+
+> A lot of time and effort went into developing this pipeline. Please cite this material if it contributed to your research.
+
+---
+
+## © License
+
+These materials were developed by members of the [BiNGS Core](https://bings.mssm.edu/) at Mount Sinai.  
+They are open access and licensed for unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.
