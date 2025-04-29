@@ -36,6 +36,7 @@ git clone https://github.com/GulayBenguUlukaya/BiNGS-Bulk-RNA-seq-pipeline.git
    - Cores: `10`
    - Memory: `64 GB`
    - Walltime: `4 hrs`
+   - ⚠️ Use your **own project account** instead of `acc_BiNGS_bulk`.
 
 2. **Create and enter your project directory:**
 
