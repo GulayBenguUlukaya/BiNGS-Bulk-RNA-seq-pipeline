@@ -14,7 +14,7 @@ Developed by the BiNGS Core at the Tisch Cancer Institute, Mount Sinai
   - [R Scripts](#r-scripts)
 - [Good Practices](#-good-practices)
 - [Troubleshooting](#-troubleshooting)
-  - ["403 Forbidden" error during A1 script](#403-forbidden-error-during-a1-script)
+  - ["403 Forbidden" error while running the A1 script](#403-forbidden-error-while-running-the-a1-script)
 - [Questions?](#-questions)
 - [Citation](#-citation)
   
@@ -107,7 +107,7 @@ source("/path/to/script.R")
 
 ## 🛠️ Troubleshooting
 
-### "403 Forbidden" error during A1 script
+### "403 Forbidden" error while running the A1 script
 
 ```text
 --2025-04-28 10:48:32--  https://ulukag01.u.hpc.mssm.edu/data_rna/raw/sample_metadata/
