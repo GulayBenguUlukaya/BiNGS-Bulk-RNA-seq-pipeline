@@ -29,7 +29,7 @@ git clone https://github.com/GulayBenguUlukaya/BiNGS-Bulk-RNA-seq-pipeline.git
 
 ---
 
-## ✋ Option 1: CodeServer (OnDemand) Setup
+## Option 1: CodeServer (OnDemand) Setup
 
 1. **Start a session with:**
    - Queue: `premium`
@@ -50,7 +50,7 @@ git clone https://github.com/GulayBenguUlukaya/BiNGS-Bulk-RNA-seq-pipeline.git
 
 ---
 
-## ✋ Option 2: VSCode Desktop App Setup
+## Option 2: VSCode Desktop App Setup
 
 1. **Start a `screen` session and request interactive job:**
 
