@@ -11,49 +11,57 @@ Welcome to the BiNGS Bulk RNA-seq pipeline — a full workflow for downloading, 
 
 >> git clone https://github.com/GulayBenguUlukaya/BiNGS-Bulk-RNA-seq-pipeline.git
 
-✋ Option 1: CodeServer OnDemand - Recommendation for starting out and running A1
+✋ Option 1: CodeServer OnDemand - Recommendation and demo for starting out
 
 When starting a session, specify premium queue, 10 cores (n), 64 Gb memory, at least 4 hrs.
 
 For scripts other than A1, a much smaller amount of resources would suffice. (e.g. 2 cores, 6 Gb)
 
+     [ulukag01@lc06e36 BiNGS]$ mkdir ./rna_seq_pipeline_test
+     
+     [ulukag01@lc06e36 BiNGS]$ cd ./rna_seq_pipeline_test
+     
+     [ulukag01@lc06e36 rna_seq_pipeline_test]$ 
+     
+     [ulukag01@lc06e36 rna_seq_pipeline_test]$ git clone https://github.com/GulayBenguUlukaya/BiNGS-Bulk-RNA-seq-pipeline.git
+
 Make a directory for your project and cd into it through terminal. Then run the git clone line (shown above) and answer prompts through terminal.
 
-✋ Option 2: VSCode Desktop App - Recommendation and demo for starting out and running A1
+✋ Option 2: VSCode Desktop App - Recommendation and demo for starting out
 
 Start a screen session and submit an interactive job request:
 
 (This is optional but highly recommended for speeding up A1)
 
-[ulukag01@li04e02 BiNGS]$ 
-
-[ulukag01@li04e02 BiNGS]$ screen -S rnaseq
-
-Disk quotas for user ulukag01 (uid 25471): 
+     [ulukag01@li04e02 BiNGS]$ 
+     
+     [ulukag01@li04e02 BiNGS]$ screen -S rnaseq
+     
+     Disk quotas for user ulukag01 (uid 25471): 
 
      Filesystem   space   quota   limit   grace   files   quota   limit   grace
      
       nfsha-ib0:/hpc  19049M  19456M  20480M            281k       0       0        
  
-[ulukag01@li04e02 BiNGS]$ 
-
-[ulukag01@li04e02 BiNGS]$ bsub -P acc_BiNGS_bulk -q premium -n 10 -W 4:00 -R span[hosts=1] -R rusage[mem=64000] -Is /bin/bash 
+     [ulukag01@li04e02 BiNGS]$ 
 
 ⚠️ Instead of acc_BiNGS_bulk, use your project account please!
+     
+     [ulukag01@li04e02 BiNGS]$ bsub -P acc_BiNGS_bulk -q premium -n 10 -W 4:00 -R span[hosts=1] -R rusage[mem=64000] -Is /bin/bash 
 
-Job <183299424> is submitted to queue <premium>.
-
-<<Waiting for dispatch ...>>
-
-<<Starting on lc06e36>>
-
-[ulukag01@lc06e36 BiNGS]$ 
-
-[ulukag01@lc06e36 BiNGS]$ cd ./rna_seq_pipeline_test
-
-[ulukag01@lc06e36 rna_seq_pipeline_test]$ 
-
-[ulukag01@lc06e36 rna_seq_pipeline_test]$ git clone https://github.com/GulayBenguUlukaya/BiNGS-Bulk-RNA-seq-pipeline.git
+     Job <183299424> is submitted to queue <premium>.
+     
+     <<Waiting for dispatch ...>>
+     
+     <<Starting on lc06e36>>
+     
+     [ulukag01@lc06e36 BiNGS]$ mkdir ./rna_seq_pipeline_test
+     
+     [ulukag01@lc06e36 BiNGS]$ cd ./rna_seq_pipeline_test
+     
+     [ulukag01@lc06e36 rna_seq_pipeline_test]$ 
+     
+     [ulukag01@lc06e36 rna_seq_pipeline_test]$ git clone https://github.com/GulayBenguUlukaya/BiNGS-Bulk-RNA-seq-pipeline.git
 
 🔥 Now you can start running from A1 and follow instructions on terminal. 
 
