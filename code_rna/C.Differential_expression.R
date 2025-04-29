@@ -162,7 +162,10 @@ repeat {
         geom_point(alpha = 0.7) +
         geom_vline(xintercept = c(-1, 1), linetype = "dashed") +
         geom_hline(yintercept = -log10(0.05), linetype = "dashed") +
-        geom_text_repel(data = subset(de, deg_status != "Not_DEG" & padj < 0.01), aes(label = gene_name), max.overlaps = 10) +
+        geom_text_repel(
+        data = subset(de, deg_status != "Not_DEG" & padj < 0.01 & abs(log2FoldChange) > 2),
+        aes(label = gene_name),
+        max.overlaps = 10) +        
         scale_color_manual(values = c("Up_reg" = "red", "Down_reg" = "blue", "Not_DEG" = "grey")) +
         theme_minimal()
 
