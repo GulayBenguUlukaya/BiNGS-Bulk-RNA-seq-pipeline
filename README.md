@@ -1,7 +1,7 @@
 
 # BiNGS Bulk RNA-seq Pipeline  
 *An End-to-End Bulk RNA-seq Analysis Pipeline*  
-Developed by the BiNGS Core at the Tisch Cancer Institute, Mount Sinai
+Developed by the [BiNGS Core](https://bings.mssm.edu/) at the Tisch Cancer Institute, Mount Sinai
 
 ---
 
