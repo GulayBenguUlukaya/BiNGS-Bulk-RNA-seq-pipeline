@@ -220,11 +220,21 @@ if (length(deg_files) == 0) {
 
     final_norm_counts <- dtl_salmon_gene_counts_medianratios[, colnames(dtl_counts), drop = FALSE]
     rownames(final_norm_counts) <- make.unique(ifelse(is.na(gene_name_map[rownames(final_norm_counts)]),
-                                                      rownames(final_norm_counts),
-                                                      gene_name_map[rownames(final_norm_counts)]))
-    final_norm_counts <- final_norm_counts[intersect(rownames(final_norm_counts), final_genes_to_plot), , drop = FALSE]
+                                                    rownames(final_norm_counts),
+                                                    gene_name_map[rownames(final_norm_counts)]))
 
+    final_norm_counts <- as.data.frame(final_norm_counts)
+    final_norm_counts <- final_norm_counts[intersect(rownames(final_norm_counts), final_genes_to_plot), , drop = FALSE]
+    final_norm_counts <- as.matrix(final_norm_counts)
+    mode(final_norm_counts) <- "numeric"
+
+    # Filter problematic rows
+    final_norm_counts <- final_norm_counts[rowSums(is.na(final_norm_counts) | is.infinite(final_norm_counts)) == 0, , drop = FALSE]
+    final_norm_counts <- final_norm_counts[rowSums(final_norm_counts) != 0, , drop = FALSE]
+
+    # Adjust row annotations too
     row_anno <- deg_status_matrix[final_genes_to_plot, , drop = FALSE]
+    row_anno <- row_anno[rownames(final_norm_counts), , drop = FALSE]
 
     anno_colors <- list()
     for (comp in colnames(row_anno)) {
