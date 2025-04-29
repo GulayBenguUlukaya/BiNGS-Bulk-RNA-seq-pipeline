@@ -5,6 +5,21 @@ Developed by the BiNGS Core at the Tisch Cancer Institute, Mount Sinai
 
 ---
 
+## Table of Contents
+- [Setup on HPC](#-setup-on-hpc)
+  - [Clone the Pipeline Repository](#-clone-the-pipeline-repository)
+- [Option 1: CodeServer (OnDemand) Setup](#-option-1-codeserver-ondemand-setup)
+- [Option 2: VSCode Desktop App Setup](#-option-2-vscode-desktop-app-setup)
+- [Running Scripts](#-running-scripts)
+  - [Bash Scripts](#bash-scripts)
+  - [R Scripts](#r-scripts)
+- [Good Practices](#-good-practices)
+- [Troubleshooting](#-troubleshooting)
+  - [Problem: "403 Forbidden" error during A1 script](#-problem-403-forbidden-error-during-a1-script)
+- [Questions?](#-questions)
+- [Citation](#-citation)
+- [License](#-license)
+  
 ## 🖥️ Setup on HPC
 
 ### 🔁 Clone the Pipeline Repository
