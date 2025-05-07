@@ -80,7 +80,11 @@ git clone https://github.com/GulayBenguUlukaya/BiNGS-Bulk-RNA-seq-pipeline.git
 
 ## 🔧 Running Scripts
 
-### Bash Scripts (A*.sh)
+For running all scripts after A1, you don't need to ask as much resources. You can most likely get away with:
+   - Cores: `4`
+   - Memory: `6 GB`
+
+### Bash Scripts (A1-9.sh)
 
 ```bash
 bash /path/to/script.sh
