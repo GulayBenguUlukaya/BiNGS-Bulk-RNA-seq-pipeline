@@ -180,7 +180,7 @@ for (deg_file in deg_files) {
       mutate(
         label = as.character(label),
         short_label = ifelse(
-          nchar(label) > 70,
+          nchar(label) > 60,
           paste0(substr(label, 1, 60), "..."),
           label
         ),
@@ -188,9 +188,12 @@ for (deg_file in deg_files) {
         NES_clamped = ifelse(NES > 1, 1, ifelse(NES < -1, -1, NES))  # Clamp NES
       )
 
-    combined$short_label <- factor(combined$short_label, levels = rev(combined$short_label))
+    combined <- combined %>%
+        arrange(NES)  # Negative NES first, positive NES later
 
-    pdf(file.path(figures_dir, "functional_analysis", "gsea_barplots", paste0(comp_name, "_gsea_top10_barplot.pdf")), width = 12, height = 9)
+    combined$short_label <- factor(combined$short_label, levels = combined$short_label)
+
+    pdf(file.path(figures_dir, "functional_analysis", "gsea_barplots", paste0(comp_name, "_gsea_top10_barplot.pdf")), width = 15, height = 9)
 
     p <- ggplot(combined, aes(x = NES, y = short_label, fill = NES_clamped)) +
         geom_col() +
