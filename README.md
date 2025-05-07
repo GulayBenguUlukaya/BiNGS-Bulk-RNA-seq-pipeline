@@ -102,7 +102,7 @@ source("/path/to/script.R")
 - Answer prompts directly in the terminal and press Enter.
 - Ensure your sample metadata is properly filled in when prompted by `A1.prepare_files.sh`.
 
-> For single-end datasets, leave `file_path_2` and `file_name_2` blank.
+> For single-end datasets, leave `file_name_2` blank.
 
 ---
 
