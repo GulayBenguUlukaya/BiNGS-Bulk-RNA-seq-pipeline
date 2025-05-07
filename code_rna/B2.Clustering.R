@@ -64,6 +64,8 @@ if (length(detected_organisms) == 1) {
 ### Load annotation GTF
 #################################################
 
+message("📜 Loading annotation GTF...")
+
 if (organism == "homo_sapiens") {
     subfolder = "grch38_gencode_36"
     gtf_file <- file.path(anno_dir, organism, subfolder, "data", "gencode.v36.annotation.gtf")
@@ -123,49 +125,71 @@ if (!all(rownames(coldata) == colnames(dtl_counts))) {
 dds <- DESeqDataSetFromMatrix(countData = dtl_counts, colData = coldata, design = ~ condition)
 vsd <- vst(dds, blind = TRUE)
 
-# PCA colored by condition
-pcaData <- plotPCA(vsd, ntop = 1000, returnData = TRUE)
-percentVar <- round(100 * attr(pcaData, "percentVar"))
+# Prompt user for metadata columns to use in PCA coloring
+meta_cols_available <- setdiff(colnames(sample_metadata), c("sample_id", "file_name_1", "file_name_2", "file_path_1", "file_path_2", "alignment_bam", "transcript_quantification_files_salmon"))
 
-pca_condition <- ggplot(pcaData, aes(x = PC1, y = PC2, color = condition, label = name)) +
-  geom_point(size = 3) +
-  geom_text(vjust = 2, size = 3) +
-  xlab(paste0("PC1: ", percentVar[1], "% variance")) +
-  ylab(paste0("PC2: ", percentVar[2], "% variance")) +
-  theme_light()
+if (interactive()) {
+  cat("\nMetadata columns available for PCA coloring:\n")
+  print(meta_cols_available)
 
-pdf(file.path(figures_dir, "clustering", "preqc_pca_colored_by_condition.pdf"), width = 8, height = 8)
-print(pca_condition)
-dev.off()
-message("✅ PCA (condition) saved at: ", file.path(figures_dir, "clustering", "preqc_pca_colored_by_condition.pdf"))
-
-# PCA colored by sequencing batch
-if ("sequencing_batch" %in% colnames(coldata) && length(unique(coldata$sequencing_batch)) > 1) {
-  pca_batch <- ggplot(pcaData, aes(x = PC1, y = PC2, color = sequencing_batch, label = name)) +
-    geom_point(size = 3) +
-    geom_text(vjust = 2, size = 3) +
-    xlab(paste0("PC1: ", percentVar[1], "% variance")) +
-    ylab(paste0("PC2: ", percentVar[2], "% variance")) +
-    theme_light()
-  
-  pdf(file.path(figures_dir, "clustering", "preqc_pca_colored_by_batch.pdf"), width = 8, height = 8)
-  print(pca_batch)
-  dev.off()
-  message("✅ PCA (batch) saved at: ", file.path(figures_dir, "clustering", "preqc_pca_colored_by_batch.pdf"))
+  cat("\nPlease enter the metadata column names (comma-separated) you'd like to use for PCA coloring (press Enter to use default: condition): ")
+  user_input <- trimws(readLines(con = stdin(), n = 1))
+  if (nchar(user_input) == 0) {
+    pca_color_vars <- "condition"
+  } else {
+    pca_color_vars <- unlist(strsplit(user_input, ","))
+    pca_color_vars <- trimws(pca_color_vars)
+  }
 } else {
-  message("👉 Skipping PCA colored by batch: only one unique batch detected.")
+  message("ℹ️ Not interactive: defaulting to PCA colored by 'condition'")
+  pca_color_vars <- "condition"
 }
 
-# Sample distance heatmap
+# Run PCA and save plots per selected metadata column
+if (length(pca_color_vars) > 0) {
+  pcaData <- plotPCA(vsd, ntop = 1000, returnData = TRUE)
+  pcaData$name <- rownames(pcaData)
+  pcaData <- pcaData %>% dplyr::select(-any_of("condition"))
+  pcaData <- dplyr::left_join(pcaData, sample_metadata, by = c("name" = "sample_id"))
+  percentVar <- round(100 * attr(pcaData, "percentVar"))
+
+  for (var in pca_color_vars) {
+    if (!var %in% colnames(pcaData)) {
+      warning("❌ Skipping unknown column: ", var)
+      next
+    }
+
+    plot_obj <- ggplot(pcaData, aes_string(x = "PC1", y = "PC2", color = var, label = "name")) +
+      geom_point(size = 3) +
+      geom_text(vjust = 2, size = 3) +
+      xlab(paste0("PC1: ", percentVar[1], "% variance")) +
+      ylab(paste0("PC2: ", percentVar[2], "% variance")) +
+      theme_light()
+
+    out_path <- file.path(figures_dir, "clustering", paste0("preqc_pca_colored_by_", var, ".pdf"))
+    pdf(out_path, width = 8, height = 8)
+    print(plot_obj)
+    dev.off()
+    message("✅ PCA plot colored by ", var, " saved at: ", out_path)
+  }
+}
+
+# Sample distance heatmap using sample_id labels
 sampleDists <- dist(t(assay(vsd)))
 sampleDistMatrix <- as.matrix(sampleDists)
-rownames(sampleDistMatrix) <- colnames(vsd)
-colnames(sampleDistMatrix) <- colnames(vsd)
+
+# Use sample_id from metadata for labeling
+sample_ids <- sample_metadata$sample_id[match(colnames(vsd), sample_metadata$sample_id)]
+rownames(sampleDistMatrix) <- sample_ids
+colnames(sampleDistMatrix) <- sample_ids
 
 colors <- colorRampPalette(rev(brewer.pal(9, "Blues")))(255)
 
 pdf(file.path(figures_dir, "clustering", "preqc_distance_matrix.pdf"), width = 8, height = 8)
-pheatmap(sampleDistMatrix, clustering_distance_rows = sampleDists, clustering_distance_cols = sampleDists, col = colors)
+pheatmap(sampleDistMatrix,
+         clustering_distance_rows = sampleDists,
+         clustering_distance_cols = sampleDists,
+         col = colors)
 dev.off()
 message("✅ Distance matrix heatmap saved at: ", file.path(figures_dir, "clustering", "preqc_distance_matrix.pdf"))
 
@@ -189,45 +213,51 @@ if (remove_samples_answer == "yes") {
   
   ### PCA Plots (Post-QC) ###
   pcaData_postqc <- plotPCA(vsd_filtered, ntop = 1000, returnData = TRUE)
+  pcaData_postqc$name <- rownames(pcaData_postqc)
+  pcaData_postqc <- pcaData_postqc %>% dplyr::select(-any_of("condition"))
+  pcaData_postqc <- dplyr::left_join(pcaData_postqc, sample_metadata, by = c("name" = "sample_id"))
   percentVar_postqc <- round(100 * attr(pcaData_postqc, "percentVar"))
-  
-  # PCA colored by condition (Post-QC)
-  pca_condition_postqc <- ggplot(pcaData_postqc, aes(x = PC1, y = PC2, color = condition, label = name)) +
-    geom_point(size = 3) +
-    geom_text(vjust = 2, size = 3) +
-    xlab(paste0("PC1: ", percentVar_postqc[1], "% variance")) +
-    ylab(paste0("PC2: ", percentVar_postqc[2], "% variance")) +
-    theme_light()
-  
-  pdf(file.path(figures_dir, "clustering", "postqc_pca_colored_by_condition.pdf"), width = 8, height = 8)
-  print(pca_condition_postqc)
-  dev.off()
-  message("✅ Post-QC PCA plot (condition) saved:")
-  print(file.path(figures_dir, "clustering", "postqc_pca_colored_by_condition.pdf"))
-  
-  # PCA colored by batch (Post-QC, if applicable)
-  if ("sequencing_batch" %in% colnames(coldata_filtered) && length(unique(coldata_filtered$sequencing_batch)) > 1) {
-    pca_batch_postqc <- ggplot(pcaData_postqc, aes(x = PC1, y = PC2, color = sequencing_batch, label = name)) +
+
+  # Prompt once more to re-specify coloring vars or reuse earlier
+  if (interactive()) {
+    cat("\nMetadata columns available for post-QC PCA coloring:\n")
+    print(meta_cols_available)
+
+    cat("\nEnter metadata columns for post-QC PCA coloring (press Enter to reuse previous: ", paste(pca_color_vars, collapse = ", "), "): ")
+    postqc_input <- trimws(readLines(con = stdin(), n = 1))
+    if (nchar(postqc_input) > 0) {
+      pca_color_vars <- trimws(unlist(strsplit(postqc_input, ",")))
+    }
+  }
+
+  for (var in pca_color_vars) {
+    if (!var %in% colnames(pcaData_postqc)) {
+      warning("❌ Skipping unknown column: ", var)
+      next
+    }
+    pca_plot <- ggplot(pcaData_postqc, aes_string(x = "PC1", y = "PC2", color = var, label = "name")) +
       geom_point(size = 3) +
       geom_text(vjust = 2, size = 3) +
       xlab(paste0("PC1: ", percentVar_postqc[1], "% variance")) +
       ylab(paste0("PC2: ", percentVar_postqc[2], "% variance")) +
       theme_light()
-    
-    pdf(file.path(figures_dir, "clustering", "postqc_pca_colored_by_batch.pdf"), width = 8, height = 8)
-    print(pca_batch_postqc)
+
+    out_path <- file.path(figures_dir, "clustering", paste0("postqc_pca_colored_by_", var, ".pdf"))
+    pdf(out_path, width = 8, height = 8)
+    print(pca_plot)
     dev.off()
-    message("✅ Post-QC PCA plot (batch) saved:")
-    print(file.path(figures_dir, "clustering", "postqc_pca_colored_by_batch.pdf"))
-  } 
-  
+    message("✅ Post-QC PCA plot colored by ", var, " saved at: ", out_path)
+  }
+
   ### Sample Distance Matrix (Post-QC) ###
   sampleDists_postqc <- dist(t(assay(vsd_filtered)))
   sampleDistMatrix_postqc <- as.matrix(sampleDists_postqc)
-  
-  rownames(sampleDistMatrix_postqc) <- colnames(vsd_filtered)
-  colnames(sampleDistMatrix_postqc) <- colnames(vsd_filtered)
-  
+
+  # Use sample_id from metadata for labeling
+  sample_ids_postqc <- sample_metadata$sample_id[match(colnames(vsd_filtered), sample_metadata$sample_id)]
+  rownames(sampleDistMatrix_postqc) <- sample_ids_postqc
+  colnames(sampleDistMatrix_postqc) <- sample_ids_postqc
+
   pdf(file.path(figures_dir, "clustering", "postqc_distance_matrix.pdf"), width = 8, height = 8)
   pheatmap(sampleDistMatrix_postqc,
            clustering_distance_rows = sampleDists_postqc,
@@ -237,14 +267,12 @@ if (remove_samples_answer == "yes") {
            number_color = "black",
            fontsize_number = 6)
   dev.off()
-  message("✅ Post-QC sample distance matrix saved:")
-  print(file.path(figures_dir, "clustering", "postqc_distance_matrix.pdf"))
-  
+  message("✅ Post-QC sample distance matrix saved at: ", file.path(figures_dir, "clustering", "postqc_distance_matrix.pdf"))
+
   # Replace for further steps
   vsd <- vsd_filtered
   coldata <- coldata_filtered
-  
-} 
+}
 
 ### Ask user if they want batch correction ###
 if ("sequencing_batch" %in% colnames(coldata) && length(unique(coldata$sequencing_batch)) > 1) {
@@ -278,6 +306,9 @@ if ("sequencing_batch" %in% colnames(coldata) && length(unique(coldata$sequencin
     assay(vsd_corrected_for_pca) <- vsd_corrected_matrix
     
     pcaData_batchcorrected <- plotPCA(vsd_corrected_for_pca, ntop = 1000, returnData = TRUE)
+    pcaData_batchcorrected$name <- rownames(pcaData_batchcorrected)
+    pcaData_batchcorrected <- pcaData_batchcorrected %>% dplyr::select(-any_of("condition"))
+    pcaData_batchcorrected <- dplyr::left_join(pcaData_batchcorrected, sample_metadata, by = c("name" = "sample_id"))
     percentVar_batchcorrected <- round(100 * attr(pcaData_batchcorrected, "percentVar"))
     
     pca_batchcorrected_plot <- ggplot(pcaData_batchcorrected, aes(x = PC1, y = PC2, color = condition, label = name)) +
