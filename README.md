@@ -125,12 +125,12 @@ Check that you can access the following in your browser:
 
 If these links do not load, there may be a temporary server issue at Mount Sinai. Please delete your pipeline folder and try again later.
 
-### Issues with LSF job submission while running A*.sh
+### Issues with LSF job submission
 
 Please check out the Minerva job submission documentation for troubleshooting lsf job issues: 
+
 👉 https://labs.icahn.mssm.edu/minervalab/documentation/lsf-job-scheduler 
 
- 
 ---
 
 ## 📫 Questions?
