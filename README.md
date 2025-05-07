@@ -80,13 +80,13 @@ git clone https://github.com/GulayBenguUlukaya/BiNGS-Bulk-RNA-seq-pipeline.git
 
 ## 🔧 Running Scripts
 
-### Bash Scripts
+### Bash Scripts (A*.sh)
 
 ```bash
 bash /path/to/script.sh
 ```
 
-### R Scripts
+### R Scripts (B1/B2/C/D.R)
 
 ```bash
 ml R/4.2.0
@@ -125,6 +125,12 @@ Check that you can access the following in your browser:
 
 If these links do not load, there may be a temporary server issue at Mount Sinai. Please delete your pipeline folder and try again later.
 
+### Issues with LSF job submission while running A*.sh
+
+Please check out the Minerva job submission documentation for troubleshooting lsf job issues: 
+👉 https://labs.icahn.mssm.edu/minervalab/documentation/lsf-job-scheduler 
+
+ 
 ---
 
 ## 📫 Questions?
