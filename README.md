@@ -13,7 +13,7 @@ Developed by the [BiNGS Core](https://bings.mssm.edu/) at the Tisch Cancer Insti
   - [Bash Scripts](#bash-scripts)
   - [R Scripts](#r-scripts)
 - [Good Practices](#-good-practices)
-- [Troubleshooting](#-troubleshooting)
+- [Troubleshooting](#%EF%B8%8F-troubleshooting)
   - ["403 Forbidden" error while running the A1 script](#403-forbidden-error-while-running-the-a1-script)
 - [Questions?](#-questions)
 - [Citation](#-citation)
