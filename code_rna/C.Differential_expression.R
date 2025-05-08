@@ -249,33 +249,20 @@ if (length(deg_files) == 0) {
     row_anno <- deg_status_matrix[final_genes_to_plot, , drop = FALSE]
     row_anno <- row_anno[rownames(final_norm_counts), , drop = FALSE]
 
-    # Create a single DEG status column for legend (e.g., first non-Not_DEG label per row)
-    row_anno$DEG_status <- apply(row_anno, 1, function(x) {
-        degs <- unique(x[x != "Not_DEG"])
-        if (length(degs) == 0) return("Not_DEG")
-        if ("Up_reg" %in% degs) return("Up_reg")
-        if ("Down_reg" %in% degs) return("Down_reg")
-        return("Not_DEG")
-    })
-    row_anno_single <- data.frame(DEG_status = row_anno$DEG_status)
-    rownames(row_anno_single) <- rownames(row_anno)
-
-    anno_colors <- list(
-        DEG_status = c(Up_reg = "red", Down_reg = "blue", Not_DEG = "grey")
-    )
+    anno_colors <- list()
+    for (comp in colnames(row_anno)) {
+        anno_colors[[comp]] <- c(Up_reg = "red", Down_reg = "blue", Not_DEG = "grey")
+    }
 
     pdf(file.path(figures_dir, "differential_expression", "combined_deg_heatmap.pdf"), width = 8, height = 8)
     pheatmap(final_norm_counts,
-            scale = "row",
-            clustering_distance_rows = "euclidean",
-            clustering_distance_cols = "euclidean",
-            annotation_row = row_anno_single,
-            annotation_colors = anno_colors,
-            show_rownames = FALSE,
-            annotation_legend = TRUE,
-            annotation_names_row = FALSE)
+             scale = "row",
+             clustering_distance_rows = "euclidean",
+             clustering_distance_cols = "euclidean",
+             annotation_row = row_anno,
+             annotation_colors = anno_colors,
+             show_rownames = FALSE)
     dev.off()
-
     message("🎨 Final combined DEG heatmap saved: ", file.path(figures_dir, "differential_expression", "combined_deg_heatmap.pdf"))
 }
 
