@@ -162,7 +162,7 @@ for (deg_file in deg_files) {
 
     if (nrow(gsea_sig_terms) > 0) {
         for (term in gsea_sig_terms$ID) {
-            pdf(file.path(figures_dir, "functional_analysis", "gsea_enrichment_curves", paste0(comp_name, "_", term, "_enrichment_curve.pdf")), width = 8, height = 6)
+            pdf(file.path(figures_dir, "functional_analysis", "gsea_enrichment_curves", paste0(comp_name, "_", term, "_enrichment_curve.pdf")), width = 12, height = 6)
             print(gseaplot2(gsea_results, geneSetID = term, title = paste0(term, "\n", comp_clean, "\nNES=", round(gsea_sig_terms$NES[gsea_sig_terms$ID == term], 2), ", padj=", signif(gsea_sig_terms$p.adjust[gsea_sig_terms$ID == term], 2))))
             dev.off()
         }
